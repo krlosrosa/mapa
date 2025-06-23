@@ -32,6 +32,10 @@ export function PalletHeader({
     (sum, item) => sum + (item.unidades ?? 0),
     0
   );
+  const totalPeso = bloco.itens.reduce(
+    (sum, item) => sum + (item.pesoBruto ?? 0) / 1000,
+    0
+  );
   const enderecosUnicos = new Set(
     bloco.itens.filter((item) => item.codItem && item.lote)
   ).size;
@@ -44,9 +48,10 @@ export function PalletHeader({
   const isPicking = tipo === "SEPARADOR";
   const icon = isPicking ? "📦" : "🚛";
 
-  const listClientes = dataRoteirizacao.filter(
-    (item) => item.transporte === infoTransporte?.transporte
-  ).map((mapear) => mapear.nomeCliente).join(" | ");
+  const listClientes = dataRoteirizacao
+    .filter((item) => item.transporte === infoTransporte?.transporte)
+    .map((mapear) => mapear.nomeCliente)
+    .join(" | ");
 
   return (
     <div className={`relative rounded-lg border-b-1`}>
@@ -117,6 +122,19 @@ export function PalletHeader({
             <div className="px-4 py-2 text-center">
               <div className="text-xs font-medium text-gray-500">Endereços</div>
               <div className={`text-xl font-bold `}>{enderecosUnicos}</div>
+            </div>
+            <div className="px-4 py-2 text-center">
+              <div className="text-xs font-medium text-gray-500">
+                Peso Bruto
+              </div>
+              <div className={`text-xl font-bold `}>
+                {typeof totalPeso === "number"
+                  ? totalPeso.toLocaleString("pt-BR", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })
+                  : totalPeso}
+              </div>
             </div>
           </div>
 

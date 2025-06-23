@@ -6,7 +6,7 @@ export default function conversaoUM(
   venda: number,
   unMedida: string
 ): ReturnProps {
-  if (unMedida === "UN" || unMedida === "CJ" || unMedida === "PC") {
+  if (unMedida === "UN" || unMedida === "CJ" ) {
     return { unidades: venda, caixas: 0 };
   } else {
     return { unidades: 0, caixas: venda };
