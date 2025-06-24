@@ -71,7 +71,6 @@ export function GrupoImpressao({
       {/* SEÇÃO SEPARADOR */}
       {blocosSeparador.length > 0 && (
         <div className="space-y-4 mb-6">
-                    <p>Teste</p>
           {blocosSeparador.map((bloco) => {
 
             return (
