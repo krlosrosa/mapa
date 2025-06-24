@@ -9,6 +9,7 @@ interface Props {
   onChangeQuebrar: (value: boolean) => void;
   onImprimir: () => void;
   isPrinting: boolean;
+  handlePrintTransporte: () => void;
 }
 
 export function PainelControlesImpressao({
@@ -16,6 +17,7 @@ export function PainelControlesImpressao({
   onChangeQuebrar,
   onImprimir,
   isPrinting,
+  handlePrintTransporte,
 }: Props) {
   return (
     <div className="mb-4 flex items-center space-x-4 no-print">
@@ -32,6 +34,7 @@ export function PainelControlesImpressao({
       <Button onClick={onImprimir} disabled={isPrinting}>
         {isPrinting ? "Gerando PDF..." : "Imprimir Mapa"}
       </Button>
+            <Button onClick={handlePrintTransporte}> Imprimir resumo</Button>
     </div>
   );
 }

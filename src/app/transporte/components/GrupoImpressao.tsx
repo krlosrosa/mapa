@@ -26,6 +26,7 @@ interface GrupoImpressaoProps {
   };
   isLast: boolean;
   index: number;
+  qtdTransporte: number
 }
 
 export function GrupoImpressao({
@@ -34,6 +35,7 @@ export function GrupoImpressao({
   configuracaoCD,
   isLast,
   index,
+  qtdTransporte
 }: GrupoImpressaoProps) {
   const { transporte, centro: empresa, linha: categoria } = grupo;
   const { dataRoteirizacao } = useRoteirizacaoStore();
@@ -69,6 +71,7 @@ export function GrupoImpressao({
       {/* SEÇÃO SEPARADOR */}
       {blocosSeparador.length > 0 && (
         <div className="space-y-4 mb-6">
+                    <p>Teste</p>
           {blocosSeparador.map((bloco) => {
 
             return (
