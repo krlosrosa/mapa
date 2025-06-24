@@ -87,5 +87,5 @@ export function agruparItensRemessa(itens: ItemRemessa[]): (ItemRemessa & {
       )
   );
 
-  return _.sortBy(itensExpandidos, ["codCliente", "pickWay"]);
+  return _.sortBy(itensExpandidos, ["transporte","codCliente", "pickWay"]);
 }

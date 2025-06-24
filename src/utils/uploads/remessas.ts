@@ -42,7 +42,7 @@ export async function processExcelFileRemessaItem(file: File): Promise<RemessasI
         }) as any[];
 
         const result: RemessasItem[] = jsonData.map((item) => ({
-          transporte: String(item["Nº transporte(DT)"] ?? "").trim(),
+          transporte: String(item["Nº transporte(DT)"] ?? "").trim().replace(/^0+/, ""),
           remessa: String(item["Remessa"] ?? "").trim(),
           itemRemessa: String(item["Nº item remessa"] ?? "").trim(),
           centro: String(item["Centro"] ?? "").trim(),
@@ -56,7 +56,7 @@ export async function processExcelFileRemessaItem(file: File): Promise<RemessasI
           unMedidade: String(item["Unid.Armaz."] ?? "").trim(),
           fabricacao: new Date(item["Dt.Fabricação"]),
           vencimento: new Date(item["Dt.Vencimento"]),
-          codCliente: String(item["Cód. Cliente"] ?? "").trim(),
+          codCliente: String(item["Cód. Cliente"] ?? "").trim().replace(/^0+/, ""),
           nomeCliente: String(item["Nome Cliente"] ?? "").trim(),
           pesoBruto: parseNumberBr(item["Peso Bruto"]),
           pesoLiquido: parseNumberBr(item["Peso Líquido"]),
