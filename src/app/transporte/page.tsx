@@ -25,6 +25,8 @@ export default function TransportePage() {
   const { handlePrint: handlePrintTransporte } =
     useHandlePrint(printRefTransportes);
 
+  const transportesUnicos = _.unionBy(grupos, "transporte")
+
   return (
     <div className="p-1">
       {/* Controles */}
@@ -54,7 +56,8 @@ export default function TransportePage() {
       </div>
       <div ref={printRefTransportes} className="print-area">
         <strong>Resumo transportes impressos</strong>
-        {_.unionBy(grupos, "transporte").map((info) => {
+        <p className="my-2">Total Transportes Impressos: {transportesUnicos.length}</p>
+        {transportesUnicos.map((info) => {
           return (
             <div className="border text-[10px]">
               <div>{info.transporte}</div>
